@@ -1,0 +1,5 @@
+[
+	{ "keys": ["ctrl+alt+shift+f"], "command": "show_panel", "args": {"panel": "replace", "reverse": false} },
+	{ "keys": ["ctrl+alt+shift+p"], "command": "show_overlay", "args": {"overlay": "command_palette"} }
+
+]
