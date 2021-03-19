@@ -1,5 +1,31 @@
 #install_shell_tools.sh
 
+
+if [[ $(uname) == "Linux" ]]
+then
+  echo "Linux Detected"
+  if [[ $(which apt) != "" ]]
+  then
+    echo "APT Package manager in use. This makes it easy..."
+    if [[ $(whoami) != "root" ]]
+    then
+      sudo apt update
+      sudo apt install -y man wget curl zsh build-essential git
+    else
+      apt update
+      apt install -y man wget curl zsh build-essential git
+    fi
+  else
+    echo "APT not detected. No other Package Managers are yet supported."
+  fi
+elif [[ $(uname) == "Darwin" ]]
+then
+  echo "Mac (Darwin) Detected. Installing Homebrew..."
+else
+  echo "Where am I? You might need to install dependencies manually :("
+fi
+
+
 echo "set shell to zsh"
 chsh -s $(which zsh)
 
@@ -13,10 +39,15 @@ sed -i 's/plugins=(/plugins=(asdf /g' $HOME/.zshrc
 
 echo "install asdf"
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+cd $HOME/.asdf
+git checkout "$(git describe --abbrev=0 --tags)"
+cd
+echo ". $HOME/.asdf/asdf.sh" >> $HOME/.zshrc
+
 
 echo "add aliases"
 echo "alias weather=\"curl wttr.in/dublin\"" >> $HOME/.zshrc
-echo "alias lakka=\"ssh eeko@lakka.kapsi.fi" >> $HOME/.zshrc
+echo "alias lakka=\"ssh eeko@lakka.kapsi.fi\"" >> $HOME/.zshrc
 echo "export PATH=$PATH:$HOME/bin" >> $HOME/.zshrc
 mkdir $HOME/bin
 
@@ -41,3 +72,7 @@ echo "installing cool tools"
 npm install -g tldr
 
 asdf reshim nodejs
+asdf reshim ruby
+asdf reshim python
+asdf reshim golang
+
