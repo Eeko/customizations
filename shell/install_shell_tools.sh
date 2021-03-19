@@ -22,6 +22,8 @@ then
 elif [[ $(uname) == "Darwin" ]]
 then
   echo "Mac (Darwin) Detected. Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  
 else
   echo "Where am I? You might need to install dependencies manually :("
 fi
