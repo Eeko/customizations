@@ -7,13 +7,14 @@ then
   if [[ $(which apt) != "" ]]
   then
     echo "APT Package manager in use. This makes it easy..."
+    UBUNTUPACKAGES=(man wget curl zsh build-essential git libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev make)
     if [[ $(whoami) != "root" ]]
     then
       sudo apt update
-      sudo apt install -y man wget curl zsh build-essential git
+      sudo apt install -y $UBUNTUPACKAGES
     else
       apt update
-      apt install -y man wget curl zsh build-essential git
+      apt install -y $UBUNTUPACKAGES
     fi
   else
     echo "APT not detected. No other Package Managers are yet supported."
