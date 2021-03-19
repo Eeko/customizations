@@ -26,8 +26,18 @@ echo "add asdf plugins python, golang and ruby"
 asdf plugin add ruby
 asdf plugin add python
 asdf plugin add golang
+asdf plugin add nodejs
 echo "asdf install latest versions of python, golang and ruby"
 asdf install ruby latest
 asdf install python latest
 asdf install golang latest
+asdf install nodejs latest
+echo "setting the freshly installed latests as the current version"
+asdf global ruby $(asdf list ruby)
+asdf global python $(asdf list python)
+asdf global golang $(asdf list golang)
+asdf global nodejs $(asdf list nodejs)
+echo "installing cool tools"
+npm install -g tldr
 
+asdf reshim nodejs
