@@ -50,7 +50,7 @@ echo ". $HOME/.asdf/asdf.sh" >> $HOME/.zshrc
 
 echo "add aliases"
 echo "alias weather=\"curl wttr.in/dublin\"" >> $HOME/.zshrc
-echo "alias lakka=\"ssh eeko@lakka.kapsi.fi\"" >> $HOME/.zshrc
+echo "alias lakka=\"ssh -t eeko@lakka.kapsi.fi 'screen -dr'\"" >> $HOME/.zshrc
 echo "export PATH=$PATH:$HOME/bin" >> $HOME/.zshrc
 mkdir $HOME/bin
 
