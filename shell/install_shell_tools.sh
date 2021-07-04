@@ -71,10 +71,12 @@ asdf global ruby $(asdf list ruby)
 asdf global python $(asdf list python)
 asdf global golang $(asdf list golang)
 asdf global nodejs $(asdf list nodejs)
+
+echo "installing cool tools"
+npm install -g tldr
+
+echo "reshim needed to add aliases to cool tools"
 asdf reshim nodejs
 asdf reshim ruby
 asdf reshim python
 asdf reshim golang
-
-echo "installing cool tools"
-npm install -g tldr
