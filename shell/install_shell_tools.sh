@@ -23,7 +23,7 @@ elif [[ $(uname) == "Darwin" ]]
 then
   echo "Mac (Darwin) Detected. Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  
+  brew install gpg
 else
   echo "Where am I? You might need to install dependencies manually :("
 fi
@@ -71,11 +71,10 @@ asdf global ruby $(asdf list ruby)
 asdf global python $(asdf list python)
 asdf global golang $(asdf list golang)
 asdf global nodejs $(asdf list nodejs)
-echo "installing cool tools"
-npm install -g tldr
-
 asdf reshim nodejs
 asdf reshim ruby
 asdf reshim python
 asdf reshim golang
 
+echo "installing cool tools"
+npm install -g tldr
