@@ -24,6 +24,8 @@ then
   echo "Mac (Darwin) Detected. Installing Homebrew..."
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew install gpg
+  # brew install docker lima
+  # please install colima as well
 else
   echo "Where am I? You might need to install dependencies manually :("
 fi
@@ -51,6 +53,8 @@ echo ". $HOME/.asdf/asdf.sh" >> $HOME/.zshrc
 echo "add aliases"
 echo "alias weather=\"curl wttr.in/dublin\"" >> $HOME/.zshrc
 echo "alias lakka=\"ssh -t eeko@lakka.kapsi.fi 'screen -dr'\"" >> $HOME/.zshrc
+echo "alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'" >> $HOME/.zshrc
+echo "alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'" >> $HOME/.zshrc
 echo "export PATH=$PATH:$HOME/bin" >> $HOME/.zshrc
 mkdir $HOME/bin
 
